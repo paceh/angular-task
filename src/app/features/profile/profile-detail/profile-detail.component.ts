@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { profileActions } from '@store/actions';
 import { AppState } from '@store/reducers';
 import { getUserProfile } from '@store/selectors';
+import { ProfileActions } from '@store/actions';
 
 @Component({
     selector: 'app-profile-detail',
@@ -17,7 +17,7 @@ export class ProfileDetailComponent implements OnInit {
 
     ngOnInit () {
 
-        this.store.dispatch(profileActions.initProfile());
+        this.store.dispatch(ProfileActions.initProfile());
 
     }
 
