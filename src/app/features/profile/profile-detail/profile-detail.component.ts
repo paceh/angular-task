@@ -17,12 +17,19 @@ export class ProfileDetailComponent implements OnInit {
     constructor (private store: Store<AppState>, private route: ActivatedRoute) {}
 
     ngOnInit () {
-        const profileId = this.route.snapshot.paramMap.get('profileId');
-        if (profileId) {
-            console.log('There is an Id', profileId);
-            this.store.dispatch(ProfileActions.selectedProfile({ profileId }));
+        const profileIndex = +(this.route.snapshot.paramMap.get('profileIndex'));
+        const seed = this.route.snapshot.paramMap.get('seed');
+
+        console.log('seed', seed);
+        console.log('index', profileIndex);
+
+        this.store.dispatch(ProfileActions.selectedProfile({ seed, profileIndex }));
+
+        if (seed && profileIndex) {
+            // console.log('I am here');
+            // this.store.dispatch(ProfileActions.selectedProfile({ seed, profileIndex }));
         } else {
-            this.store.dispatch(ProfileActions.initProfile());
+            // this.store.dispatch(ProfileActions.initProfile());
         }
 
     }

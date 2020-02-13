@@ -21,13 +21,23 @@ export class ProfileEffects {
 
   getUserProfiles$ = createEffect(() => this.actions$.pipe(
     ofType(ProfileActions.initProfiles),
-    exhaustMap(() => this.profileService.getRandomProfiles()
+    exhaustMap(seed => this.profileService.getRandomProfiles(seed.seed)
       .pipe(
         map(users => ProfileActions.initProfilesSuccess(responseToUserProfiles(users))),
         catchError(() => EMPTY)
       ))
     )
   );
+
+  // getSelectedProfile$ = createEffect(() => this.actions$.pipe(
+  //   ofType(ProfileActions.selectedProfile),
+  //   exhaustMap(() => this.profileService.getRandomProfiles()
+  //     .pipe(
+  //       map(users => ProfileActions.selectedProfilesSuccess(responseToUserProfiles(users))),
+  //       catchError(() => EMPTY)
+  //     ))
+  //   )
+  // );
 
   constructor(
     private actions$: Actions,

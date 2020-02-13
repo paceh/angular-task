@@ -14,7 +14,11 @@ export class ProfileService {
         return this.http.get<any>(`${this.url}`);
     }
 
-    getRandomProfiles(): Observable<any> {
-        return this.http.get<any>(`${this.url}?page=1&results=10`);
+    getRandomProfiles(seed: string): Observable<any> {
+        return this.http.get<any>(`${this.url}/?&seed=${seed}&results=10`);
+    }
+
+    getSelectedProfile(): Observable<any> {
+        return this.http.get<any>(`${this.url}`);
     }
 }

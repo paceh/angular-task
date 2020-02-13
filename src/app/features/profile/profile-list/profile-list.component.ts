@@ -19,19 +19,26 @@ export interface tableUser {
 export class ProfileListComponent implements OnInit {
 
   displayedColumns: string[] = ['picture', 'firstName', 'lastName'];
-
   users$ = this.store.select(getUserProfiles);
+  seed: string;
 
   constructor (private store: Store<AppState>, private router: Router) {}
 
   ngOnInit () {
+      // This will get a list of random users but also allow for retrieval of a profile
+      // if the user is still on the detail page (if refreshing the page) after 
+      // selecting a user from the profile list.
+      // It has to be done this way due to the nature of the API being random
 
-      this.store.dispatch(ProfileActions.initProfiles());
+      // Generate random seed that will provide random results, but will be able to refresh the
+      // profile detail page with the same profile
+      this.seed = Math.random().toString(25).substring(2);
 
+      this.store.dispatch(ProfileActions.initProfiles({seed: this.seed}));
   }
 
   goToProfile(profileIndex: number) {
-    this.router.navigate(['/profile', profileIndex]);
+    this.router.navigate(['profile', {seed: this.seed, profileIndex: profileIndex}]);
   }
 
 }

@@ -4,7 +4,8 @@ import { ProfileActions } from './profile.actions';
 
 const initialState: ProfileState = {
     user: null,
-    users: []
+    users: [],
+    seed: null
 };
 
 const reducer = createReducer(
@@ -22,11 +23,11 @@ const reducer = createReducer(
         return { ...state, users: users };
 
     }),
-    on(ProfileActions.selectedProfile, (state, { profileIndex }) => {
-        const selectedUser = state.users[+profileIndex];
-        console.log('selected User', selectedUser);
+    on(ProfileActions.selectedProfile, (state, { seed, profileIndex }) => {
+        // console.log('neew seed', seed);
+        // console.log('new index', profileIndex);
+        const selectedUser = state.users[profileIndex];
         return { ...state, user: selectedUser };
-
     })
 );
 
