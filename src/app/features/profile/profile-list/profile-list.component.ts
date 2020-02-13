@@ -3,6 +3,7 @@ import { getUserProfiles } from '@store/selectors';
 import { Store } from '@ngrx/store';
 import { AppState } from '@store/reducers';
 import { ProfileActions } from '@store/actions';
+import { Router } from '@angular/router';
 
 export interface tableUser {
   picture: string;
@@ -21,7 +22,7 @@ export class ProfileListComponent implements OnInit {
 
   users$ = this.store.select(getUserProfiles);
 
-  constructor (private store: Store<AppState>) {}
+  constructor (private store: Store<AppState>, private router: Router) {}
 
   ngOnInit () {
 
@@ -29,8 +30,8 @@ export class ProfileListComponent implements OnInit {
 
   }
 
-  goToProfile() {
-    
+  goToProfile(profileId: number) {
+    this.router.navigate(['/profile-detail', profileId]);
   }
 
 }
