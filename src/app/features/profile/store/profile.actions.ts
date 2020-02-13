@@ -8,7 +8,7 @@ const initProfiles = createAction('[Profiles] Profiles Init', props<{seed: strin
 const initProfilesSuccess = createAction('[Profiles] Profiles Init Success', props<{users: UserProfile[]}>());
 
 const selectedProfile = createAction('[Profile] Selected Profile', props<{seed: string, profileIndex: number}>());
-// const selectedProfileSuccess = createAction('[Profile] Selected Profile Success', props<{user: UserProfile}>());
+const selectedProfileSuccess = createAction('[Profile] Selected Profile Success', props<{user: UserProfile}>());
 
 
 export const ProfileActions = { 
@@ -16,6 +16,6 @@ export const ProfileActions = {
     initProfileSuccess, 
     initProfiles, 
     initProfilesSuccess,
-    selectedProfile
-    // selectedProfileSuccess
+    selectedProfile,
+    selectedProfileSuccess
 };

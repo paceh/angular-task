@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '@store/reducers';
-import { getUserProfile } from '@store/selectors';
+import { getUserProfile, getUserProfiles } from '@store/selectors';
 import { ProfileActions } from '@store/actions';
 import { ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs/operators';
 
 @Component({
     selector: 'app-profile-detail',
@@ -20,17 +21,10 @@ export class ProfileDetailComponent implements OnInit {
         const profileIndex = +(this.route.snapshot.paramMap.get('profileIndex'));
         const seed = this.route.snapshot.paramMap.get('seed');
 
-        console.log('seed', seed);
-        console.log('index', profileIndex);
-
-        this.store.dispatch(ProfileActions.selectedProfile({ seed, profileIndex }));
-
         if (seed && profileIndex) {
-            // console.log('I am here');
-            // this.store.dispatch(ProfileActions.selectedProfile({ seed, profileIndex }));
+            this.store.dispatch(ProfileActions.selectedProfile({ seed, profileIndex }));
         } else {
-            // this.store.dispatch(ProfileActions.initProfile());
+            this.store.dispatch(ProfileActions.initProfile());
         }
-
     }
 }

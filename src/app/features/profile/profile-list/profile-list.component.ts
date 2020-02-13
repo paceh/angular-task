@@ -38,7 +38,7 @@ export class ProfileListComponent implements OnInit {
   }
 
   goToProfile(profileIndex: number) {
-    this.router.navigate(['profile', {seed: this.seed, profileIndex: profileIndex}]);
+      this.router.navigate(['profile', {seed: this.seed, profileIndex: profileIndex}]);
   }
 
 }

@@ -4,30 +4,22 @@ import { ProfileActions } from './profile.actions';
 
 const initialState: ProfileState = {
     user: null,
-    users: [],
-    seed: null
+    users: []
 };
 
 const reducer = createReducer(
     initialState,
     on(ProfileActions.initProfile, ProfileActions.initProfiles, (state) => {
-
         return { ...state };
-
     }),
     on(ProfileActions.initProfileSuccess, (state, { user }) => {
         return { ...state, user: user };
-
     }),
     on(ProfileActions.initProfilesSuccess, (state, { users }) => {
         return { ...state, users: users };
-
     }),
-    on(ProfileActions.selectedProfile, (state, { seed, profileIndex }) => {
-        // console.log('neew seed', seed);
-        // console.log('new index', profileIndex);
-        const selectedUser = state.users[profileIndex];
-        return { ...state, user: selectedUser };
+    on(ProfileActions.selectedProfileSuccess, (state, { user }) => {
+        return { ...state, user: user };
     })
 );
 

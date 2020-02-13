@@ -29,15 +29,15 @@ export class ProfileEffects {
     )
   );
 
-  // getSelectedProfile$ = createEffect(() => this.actions$.pipe(
-  //   ofType(ProfileActions.selectedProfile),
-  //   exhaustMap(() => this.profileService.getRandomProfiles()
-  //     .pipe(
-  //       map(users => ProfileActions.selectedProfilesSuccess(responseToUserProfiles(users))),
-  //       catchError(() => EMPTY)
-  //     ))
-  //   )
-  // );
+  getselectedProfiles$ = createEffect(() => this.actions$.pipe(
+    ofType(ProfileActions.selectedProfile),
+    exhaustMap(selected => this.profileService.getSelectedProfiles(selected.seed, selected.profileIndex)
+      .pipe(
+        map(users => ProfileActions.selectedProfileSuccess(responseToSelectedProfiles(users, selected.profileIndex))),
+        catchError(() => EMPTY)
+      ))
+    )
+  );
 
   constructor(
     private actions$: Actions,
@@ -81,5 +81,22 @@ function responseToUserProfiles(apiResponse: any): { users: UserProfile[] } {
     users.push(randomUser);
   }  
   return { users };
+}
+
+function responseToSelectedProfiles(apiResponse: any, profileIndex: number): { user: UserProfile } {
+  const randomUsers = {...apiResponse.results};
+  const selectedUser = randomUsers[profileIndex];
+  const user: UserProfile = {
+    cellNumber: selectedUser.cell,
+    city: selectedUser.location.city,
+    dateOfBirth: selectedUser.dob.date,
+    email: selectedUser.email,
+    firstName: selectedUser.name.first,
+    lastName: selectedUser.name.last,
+    phoneNumber: selectedUser.phone,
+    picture: selectedUser.picture.medium,
+    state: selectedUser.location.state
+}
+  return { user };
 }
 

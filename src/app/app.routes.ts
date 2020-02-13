@@ -13,7 +13,7 @@ export const appRoutes: Routes = [
     {
         component: ProfileDetailComponent,
         data: { name: 'profileDetail' },
-        path: 'profile/:profileId'
+        path: 'profile/:seed/:profileId'
     },
     {
         component: ProfileListComponent,

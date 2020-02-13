@@ -18,7 +18,11 @@ export class ProfileService {
         return this.http.get<any>(`${this.url}/?&seed=${seed}&results=10`);
     }
 
-    getSelectedProfile(): Observable<any> {
-        return this.http.get<any>(`${this.url}`);
+    getSelectedProfiles(seed: string, selectedIndex: number): Observable<any> {
+        const response$ = this.http.get<any>(`${this.url}/?&seed=${seed}&results=10`);
+        response$.subscribe(results => {
+            console.log('tetasdf', results);
+        });
+        return response$;
     }
 }
