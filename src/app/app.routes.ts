@@ -8,6 +8,11 @@ export const appRoutes: Routes = [
     {
         component: ProfileDetailComponent,
         data: { name: 'profileDetail' },
+        path: 'profile'
+    },
+    {
+        component: ProfileDetailComponent,
+        data: { name: 'profileDetail' },
         path: 'profile/:profileId'
     },
     {
