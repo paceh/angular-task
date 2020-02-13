@@ -6,23 +6,15 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class ProfileService {
-    private url = 'https://randomuser.me/api/?nat=us';
+    private url = 'https://randomuser.me/api';
 
     constructor(private http: HttpClient) {}
 
     getRandomProfile(): Observable<any> {
-        return this.http.get<any>(`${this.url}`);
+        return this.http.get<any>(`${this.url}/?nat=us`);
     }
 
     getRandomProfiles(seed: string): Observable<any> {
-        return this.http.get<any>(`${this.url}/?&seed=${seed}&results=10`);
-    }
-
-    getSelectedProfiles(seed: string, selectedIndex: number): Observable<any> {
-        const response$ = this.http.get<any>(`${this.url}/?&seed=${seed}&results=10`);
-        response$.subscribe(results => {
-            console.log('tetasdf', results);
-        });
-        return response$;
+        return this.http.get<any>(`${this.url}/?nat=us&results=10&seed=${seed}`);
     }
 }

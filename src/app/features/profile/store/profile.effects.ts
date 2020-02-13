@@ -31,7 +31,7 @@ export class ProfileEffects {
 
   getselectedProfiles$ = createEffect(() => this.actions$.pipe(
     ofType(ProfileActions.selectedProfile),
-    exhaustMap(selected => this.profileService.getSelectedProfiles(selected.seed, selected.profileIndex)
+    exhaustMap(selected => this.profileService.getRandomProfiles(selected.seed)
       .pipe(
         map(users => ProfileActions.selectedProfileSuccess(responseToSelectedProfiles(users, selected.profileIndex))),
         catchError(() => EMPTY)
@@ -80,6 +80,7 @@ function responseToUserProfiles(apiResponse: any): { users: UserProfile[] } {
     }
     users.push(randomUser);
   }  
+  
   return { users };
 }
 
@@ -96,7 +97,8 @@ function responseToSelectedProfiles(apiResponse: any, profileIndex: number): { u
     phoneNumber: selectedUser.phone,
     picture: selectedUser.picture.medium,
     state: selectedUser.location.state
-}
+  }
+
   return { user };
 }
 

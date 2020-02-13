@@ -21,7 +21,7 @@ export class ProfileDetailComponent implements OnInit {
         const profileIndex = +(this.route.snapshot.paramMap.get('profileIndex'));
         const seed = this.route.snapshot.paramMap.get('seed');
 
-        if (seed && profileIndex) {
+        if (seed) {
             this.store.dispatch(ProfileActions.selectedProfile({ seed, profileIndex }));
         } else {
             this.store.dispatch(ProfileActions.initProfile());
