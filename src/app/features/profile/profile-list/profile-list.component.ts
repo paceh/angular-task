@@ -30,8 +30,8 @@ export class ProfileListComponent implements OnInit {
 
   }
 
-  goToProfile(profileId: number) {
-    this.router.navigate(['/profile-detail', profileId]);
+  goToProfile(profileIndex: number) {
+    this.router.navigate(['/profile', profileIndex]);
   }
 
 }

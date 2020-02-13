@@ -7,4 +7,12 @@ const initProfileSuccess = createAction('[Profile] Profile Init Success', props<
 const initProfiles = createAction('[Profiles] Profiles Init');
 const initProfilesSuccess = createAction('[Profiles] Profiles Init Success', props<{users: UserProfile[]}>());
 
-export const ProfileActions = { initProfile, initProfileSuccess, initProfiles, initProfilesSuccess };
+const selectedProfile = createAction('[Profile] Selected Profile', props<{profileIndex: string}>());
+
+export const ProfileActions = { 
+    initProfile, 
+    initProfileSuccess, 
+    initProfiles, 
+    initProfilesSuccess,
+    selectedProfile
+};

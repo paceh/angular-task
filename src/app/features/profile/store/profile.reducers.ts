@@ -21,6 +21,12 @@ const reducer = createReducer(
     on(ProfileActions.initProfilesSuccess, (state, { users }) => {
         return { ...state, users: users };
 
+    }),
+    on(ProfileActions.selectedProfile, (state, { profileIndex }) => {
+        const selectedUser = state.users[+profileIndex];
+        console.log('selected User', selectedUser);
+        return { ...state, user: selectedUser };
+
     })
 );
 
