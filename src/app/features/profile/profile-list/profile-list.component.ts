@@ -37,6 +37,10 @@ export class ProfileListComponent implements OnInit {
       this.store.dispatch(ProfileActions.initProfiles({seed: this.seed}));
   }
 
+  /**
+   * Navigate to the profile details page
+   * @param profileIndex Position of the selected prfile within the profile list
+   */
   goToProfile(profileIndex: number) {
       this.router.navigate(['profile', {seed: this.seed, profileIndex: profileIndex}]);
   }

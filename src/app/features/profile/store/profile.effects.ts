@@ -62,6 +62,10 @@ function responseToUserProfile(apiResponse: any): { user: UserProfile }  {
     return { user };
 }
 
+/**
+ * Convert response from API to User Profile Array
+ * @param apiResponse Response object that is returned from the API
+ */
 function responseToUserProfiles(apiResponse: any): { users: UserProfile[] } {
   const randomUsers = {...apiResponse.results};
   const userLength = Object.keys(randomUsers).length;
@@ -84,6 +88,11 @@ function responseToUserProfiles(apiResponse: any): { users: UserProfile[] } {
   return { users };
 }
 
+/**
+ * Convert response from API to User Profile Type
+ * @param apiResponse Response object that is returned from the API
+ * @param profileIndex Position of the selected prfile within the profile list
+ */
 function responseToSelectedProfiles(apiResponse: any, profileIndex: number): { user: UserProfile } {
   const randomUsers = {...apiResponse.results};
   const selectedUser = randomUsers[profileIndex];

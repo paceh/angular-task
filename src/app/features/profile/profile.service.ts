@@ -10,10 +10,17 @@ export class ProfileService {
 
     constructor(private http: HttpClient) {}
 
+    /**
+     * Retrieve a random profile
+     */
     getRandomProfile(): Observable<any> {
         return this.http.get<any>(`${this.url}/?nat=us`);
     }
 
+    /**
+     * Retrieve multiple random profiles
+     * @param seed Identifier for the list of profiles retrieved
+     */
     getRandomProfiles(seed: string): Observable<any> {
         return this.http.get<any>(`${this.url}/?nat=us&results=10&seed=${seed}`);
     }
