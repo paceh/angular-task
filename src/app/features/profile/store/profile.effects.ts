@@ -110,4 +110,3 @@ function responseToSelectedProfiles(apiResponse: any, profileIndex: number): { u
 
   return { user };
 }
-
