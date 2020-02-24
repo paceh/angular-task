@@ -7,10 +7,13 @@ import { LayoutModule } from '@core/layout/layout.module';
 import { StoreModule } from '@ngrx/store';
 import { ProfileDetailComponent } from './profile-detail';
 import { getProfileReducer } from './store/profile.reducers';
+import { ProfileListComponent } from './profile-list/profile-list.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
     declarations: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        ProfileListComponent
     ],
     entryComponents: [
         ProfileDetailComponent
@@ -24,6 +27,7 @@ import { getProfileReducer } from './store/profile.reducers';
         MatCardModule,
         MatDividerModule,
         MatListModule,
+        MatTableModule,
         StoreModule.forFeature('profile', getProfileReducer)
     ]
 })
