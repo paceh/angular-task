@@ -1,0 +1,6 @@
+<div class="container">
+    <h2>List of Users</h2>
+    <div class="sub-container" *ngFor="let user of usersList | keyvalue" >
+        <a href="javascript:void(0)" click = "getuserById(user.userId)">{{user.listofUsers}}</a>
+    </div>
+</div>
