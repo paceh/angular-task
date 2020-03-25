@@ -1,0 +1,35 @@
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profile List"></crx-header>
+    </div>
+    
+    <mat-card *ngIf="list" class="card">
+        <mat-card-title-group>
+            <mat-card-title>Profiles list</mat-card-title>
+        </mat-card-title-group>
+        <mat-card-content>
+            
+
+            <table mat-table [dataSource]="list" class="mat-elevation-z8">
+
+                
+                <ng-container *ngFor="let column of component.columns">
+                    <ng-container [matColumnDef]="column.id">
+                        <th mat-header-cell *matHeaderCellDef>{{ column.name }}</th>
+                        <td 
+                        (click)="goToDetails(element.id)"
+                        class="pointer"
+                        mat-cell 
+                        *matCellDef="let element">{{ element[column.id] }}</td>
+                    </ng-container>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="component.displayColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: component.displayColumns;"></tr>
+            </table>
+
+
+        </mat-card-content>
+    </mat-card>
+</crx-page>

@@ -27,7 +27,10 @@
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
-                    <span>Date of Birth: </span><span>{{ user.dateOfBirth }}</span>
+
+
+                    <!-- date pipe to make the date look a bit more readable -->
+                    <span>Date of Birth: </span><span>{{ user.dateOfBirth | date: 'MMM dd yyyy' }}</span>
                 </mat-list-item>
             </mat-list>
         </mat-card-content>
