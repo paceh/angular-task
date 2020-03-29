@@ -1,5 +1,14 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
+import { UserProfile } from '@interfaces';
 
-const initProfile = createAction('[Profile] Init');
+const loadProfile = createAction('[Profile] Profile load');
+const loadProfileSuccess = createAction('[Profile] Profile load Success ', props<{user: UserProfile}>());
+const loadProfilesSuccess = createAction('[Profile] Profiles load Success ', props<{users: UserProfile[]}>());
+const loadProfileFail = createAction('[Profile] Profile load Failure ');
 
-export const profileActions = { initProfile };
+export const ProfileActions = {
+    loadProfile,
+    loadProfileFail,
+    loadProfileSuccess,
+    loadProfilesSuccess,
+};
