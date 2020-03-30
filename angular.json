@@ -31,7 +31,9 @@
               "src/styles.less"
             ],
             "stylePreprocessorOptions": {
-                "includePaths": ["src/less"]
+              "includePaths": [
+                "src/less"
+              ]
             },
             "scripts": []
           },
@@ -128,6 +130,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-task"
+    }
+  },
+  "defaultProject": "angular-task",
+  "cli": {
+    "analytics": false
+  }
 }
