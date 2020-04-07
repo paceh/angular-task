@@ -12,9 +12,14 @@ import { ProfileEffects } from './store/profile.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { ProfileCardComponent } from './shared/profile-card/profile-card.component';
 
 @NgModule({
-    declarations: [ProfileDetailComponent, ProfilesListComponent],
+    declarations: [
+        ProfileDetailComponent,
+        ProfilesListComponent,
+        ProfileCardComponent,
+    ],
     entryComponents: [ProfileDetailComponent],
     exports: [ProfileDetailComponent],
     imports: [
