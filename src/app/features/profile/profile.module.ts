@@ -7,24 +7,26 @@ import { LayoutModule } from '@core/layout/layout.module';
 import { StoreModule } from '@ngrx/store';
 import { ProfileDetailComponent } from './profile-detail';
 import { getProfileReducer } from './store/profile.reducers';
+import { ProfilesListComponent } from './profiles-list/profiles-list.component';
+import { ProfileEffects } from './store/profile.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-    declarations: [
-        ProfileDetailComponent
-    ],
-    entryComponents: [
-        ProfileDetailComponent
-    ],
-    exports: [
-        ProfileDetailComponent
-    ],
+    declarations: [ProfileDetailComponent, ProfilesListComponent],
+    entryComponents: [ProfileDetailComponent],
+    exports: [ProfileDetailComponent],
     imports: [
         CommonModule,
         LayoutModule,
         MatCardModule,
         MatDividerModule,
         MatListModule,
-        StoreModule.forFeature('profile', getProfileReducer)
-    ]
+        HttpClientModule,
+        StoreModule.forFeature('profile', getProfileReducer),
+        EffectsModule.forRoot([ProfileEffects]),
+        RouterModule,
+    ],
 })
-export class ProfileModule { }
+export class ProfileModule {}
