@@ -1,0 +1,16 @@
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profiles List"></crx-header>
+    </div>
+
+    <div class="container" *ngIf="users$ | async as users">
+        <div *ngFor="let user of users">
+            <div [routerLink]="['/profile', user.id]">
+                <app-profile-card
+                    [user]="user"
+                    [isLink]="true"
+                ></app-profile-card>
+            </div>
+        </div>
+    </div>
+</crx-page>

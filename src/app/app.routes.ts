@@ -2,26 +2,37 @@ import { Routes } from '@angular/router';
 import { PageNotFoundComponent } from '@core/layout/page-not-found';
 import { HomePageComponent } from '@features/home-page';
 import { ProfileDetailComponent } from '@features/profile/profile-detail';
+import { ProfilesListComponent } from './features/profile/profiles-list/profiles-list.component';
 
 export const appRoutes: Routes = [
     {
         component: ProfileDetailComponent,
         data: { name: 'profileDetail' },
-        path: 'profile'
+        path: 'profile',
+    },
+    {
+        component: ProfileDetailComponent,
+        data: { name: 'profileDetail' },
+        path: 'profile/:id',
+    },
+    {
+        component: ProfilesListComponent,
+        data: { name: 'profilesList' },
+        path: 'profiles',
     },
     {
         component: PageNotFoundComponent,
         data: { name: 'pageNotFound' },
-        path: '404'
+        path: '404',
     },
     {
         component: HomePageComponent,
         data: { name: 'homePage' },
-        path: ''
+        path: '',
     },
     {
         data: { name: 'pageNotFound' },
         path: '**',
-        redirectTo: '/404'
-    }
+        redirectTo: '/404',
+    },
 ];
