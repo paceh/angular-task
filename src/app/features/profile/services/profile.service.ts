@@ -12,21 +12,36 @@ export class ProfileService {
   getRandom(): Observable<UserProfile> {
     const url = "https://randomuser.me/api";
     return this.http.get<any>(url).pipe(
-      map<any, UserProfile>(this.toUserProfile.bind(this)),
+      map<any, UserProfile>(this.reduceToUserProfile.bind(this)),
     )
   }
 
-  private toUserProfile(response: any): UserProfile {
+  getManyRandom(): Observable<UserProfile[]> {
+    const url = "https://randomuser.me/api?results=10";
+    return this.http.get<any>(url).pipe(
+      map<any, UserProfile[]>(this.toUserProfiles.bind(this)),
+    )
+  }
+
+  private toUserProfiles(response: any): UserProfile[] {
+    return response.results.map(this.toUserProfile.bind(this))
+  }
+
+  private reduceToUserProfile(response: any): UserProfile {
+    return this.toUserProfile(response.results[0])
+  }
+
+  private toUserProfile(result: any): UserProfile {
     return {
-      dateOfBirth: response.results[0].dob.date,
-      email: response.results[0].email,
-      firstName: response.results[0].name.first,
-      lastName: response.results[0].name.last,
-      phoneNumber: response.results[0].phone,
-      cellNumber: response.results[0].cell,
-      picture: response.results[0].picture.medium,
-      city: response.results[0].location.city,
-      state: response.results[0].location.state,
+      dateOfBirth: result.dob.date,
+      email: result.email,
+      firstName: result.name.first,
+      lastName: result.name.last,
+      phoneNumber: result.phone,
+      cellNumber: result.cell,
+      picture: result.picture.medium,
+      city: result.location.city,
+      state: result.location.state,
     }
   }
 }

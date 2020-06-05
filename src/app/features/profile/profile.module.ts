@@ -9,16 +9,19 @@ import { ProfileDetailComponent } from './profile-detail/profile-detail.componen
 import { getProfileReducer } from './store/profile.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { ProfileEffects } from './store/profile.effects';
+import { ProfilesComponent } from './profiles/profiles.component';
 
 @NgModule({
     declarations: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        ProfilesComponent
     ],
     entryComponents: [
         ProfileDetailComponent
     ],
     exports: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        ProfilesComponent
     ],
     imports: [
         CommonModule,

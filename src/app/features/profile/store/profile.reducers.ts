@@ -15,7 +15,9 @@ const dummyProfile: UserProfile = {
     state: 'CA'
 };
 
-const initialState: ProfileState = {};
+const initialState: ProfileState = {
+    users: [],
+};
 
 const reducer = createReducer(
     initialState,
@@ -24,11 +26,21 @@ const reducer = createReducer(
         return { ...state, user: dummyProfile };
 
     }),
-    on(profileActions.loadRandomProfileSuccess, (state, action) => {
+    on(profileActions.getProfileByIndex, (state, { index }) => {
 
-        return { ...state, user: action.user }
+        return { ...state, user: state.users[index] }
 
-    })
+    }),
+    on(profileActions.loadRandomProfileSuccess, (state, { user }) => {
+
+        return { ...state, user }
+
+    }),
+    on(profileActions.loadRandomProfilesSuccess, (state, { users }) => {
+
+        return { ...state, users }
+
+    }),
 );
 
 // tslint:disable only-arrow-functions
