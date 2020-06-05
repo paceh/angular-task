@@ -1,5 +1,13 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
+import { UserProfile } from '../interfaces';
 
 const initProfile = createAction('[Profile] Init');
 
-export const profileActions = { initProfile };
+const loadRandomProfile = createAction('[Profile] Load Random')
+const loadRandomProfileSuccess = createAction('[Profile] Load Random Success', props<{ user: UserProfile }>())
+
+export const profileActions = { 
+  initProfile, 
+  loadRandomProfile,
+  loadRandomProfileSuccess,
+};
