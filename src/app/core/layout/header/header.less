@@ -21,6 +21,7 @@
 .title {
     align-items: baseline;
     display: flex;
+    justify-content: space-between;
     flex-direction: row;
     left: 50%;
     margin: 0;
@@ -37,7 +38,17 @@
         min-width: 110px; // prevent multiline
         transform: translateY(-1px);
     }
+
+    a.crx-header--improvised-link {
+        margin-left: 1rem;
+        color: #000;
+        &:hover {
+            opacity: .75;
+        }
+    }
 }
+
+
 
 @media @tabletPortraitDown {
     :host {
