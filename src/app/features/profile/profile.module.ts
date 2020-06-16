@@ -5,18 +5,23 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { LayoutModule } from '@core/layout/layout.module';
 import { StoreModule } from '@ngrx/store';
-import { ProfileDetailComponent } from './profile-detail';
+import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 import { getProfileReducer } from './store/profile.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { ProfileEffects } from './store/profile.effects';
+import { ProfilesComponent } from './profiles/profiles.component';
 
 @NgModule({
     declarations: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        ProfilesComponent
     ],
     entryComponents: [
         ProfileDetailComponent
     ],
     exports: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        ProfilesComponent
     ],
     imports: [
         CommonModule,
@@ -24,7 +29,8 @@ import { getProfileReducer } from './store/profile.reducers';
         MatCardModule,
         MatDividerModule,
         MatListModule,
-        StoreModule.forFeature('profile', getProfileReducer)
-    ]
+        StoreModule.forFeature('profile', getProfileReducer),
+        EffectsModule.forFeature([ProfileEffects])
+    ],
 })
 export class ProfileModule { }

@@ -1,1 +1,2 @@
-export * from './profile-detail.component';
+// TODO: Fix circular dependency issue.
+// export * from './profile-detail.component';
