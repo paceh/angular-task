@@ -1,0 +1,72 @@
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profile List"></crx-header>
+    </div>
+
+    <div class="crx-profile-list--header">
+        <div>
+            <button mat-raised-button
+                [disabled]="loading$ | async"
+                (click)="generateProfiles()">Shuffle</button>
+
+        </div>
+    </div>
+
+    <ng-container *ngIf="profileList$ | async as profileList">
+
+        <mat-table *ngIf="profileList?.length"
+            [dataSource]="profileList"
+            class="mat-elevation-z8">
+
+
+            <ng-container matColumnDef="view">
+                <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <button (click)="viewProfile(element, profileList)"
+                        mat-raised-button
+                        color="primary">View Details</button>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef=firstName>
+                <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="lastName">
+                <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="city">
+                <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="cellNumber">
+                <mat-header-cell *matHeaderCellDef> Cell No. </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.cellNumber}} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="dateOfBirth">
+                <mat-header-cell *matHeaderCellDef> Date of Birth </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.dateOfBirth | date : 'yyyy MMM dd'}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+    </ng-container>
+
+</crx-page>
