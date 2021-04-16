@@ -23,6 +23,22 @@ const reducer = createReducer(
 
         return { ...state, user: dummyProfile };
 
+    }),
+    on(profileActions.initRandomProfile, (state, action) => {
+        const user: UserProfile = {
+            cellNumber: action.profile.cell,
+            phoneNumber: action.profile.phone,
+            city: action.profile.location.city,
+            state: action.profile.location.state,
+            dateOfBirth: action.profile.dob.date,
+            picture: action.profile.picture.medium,
+            email: action.profile.email,
+            firstName: action.profile.name.first,
+            lastName: action.profile.name.last,
+        }
+        
+        return { ...state, user };
+
     })
 );
 
