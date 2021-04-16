@@ -8,7 +8,8 @@ import { RoutingService } from '@core/routing/routing.service';
 })
 export class HomePageComponent {
     constructor(private routingService: RoutingService) {}
-    goToRandomProfile() {
-        this.routingService.toRoute(['profile'])
+    
+    goToRoute(route: string) {
+        this.routingService.toRoute([route]);
     }
 }

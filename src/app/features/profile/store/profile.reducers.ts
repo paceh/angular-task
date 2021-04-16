@@ -17,6 +17,21 @@ const dummyProfile: UserProfile = {
 
 const initialState: ProfileState = {};
 
+const mapToUserProfile = (profile: any): UserProfile => {
+    const data: UserProfile = {
+        cellNumber: profile.cell,
+        phoneNumber: profile.phone,
+        city: profile.location.city,
+        state: profile.location.state,
+        dateOfBirth: profile.dob.date,
+        picture: profile.picture.medium,
+        email: profile.email,
+        firstName: profile.name.first,
+        lastName: profile.name.last,
+    }
+    return data;
+};
+
 const reducer = createReducer(
     initialState,
     on(profileActions.initProfile, (state) => {
@@ -25,18 +40,22 @@ const reducer = createReducer(
 
     }),
     on(profileActions.initRandomProfile, (state, action) => {
-        const user: UserProfile = {
-            cellNumber: action.profile.cell,
-            phoneNumber: action.profile.phone,
-            city: action.profile.location.city,
-            state: action.profile.location.state,
-            dateOfBirth: action.profile.dob.date,
-            picture: action.profile.picture.medium,
-            email: action.profile.email,
-            firstName: action.profile.name.first,
-            lastName: action.profile.name.last,
-        }
+        const user: UserProfile = mapToUserProfile(action.profile);
         
+        return { ...state, user };
+
+    }),
+    on(profileActions.initRandomProfileList, (state, action) => {
+        const users: UserProfile[] = action.profiles.map((user: any) => {
+            return mapToUserProfile(user);
+        });
+
+        return { ...state, users };
+
+    }),
+    on(profileActions.setProfile, (state, action) => {
+        const user = state.users.find((user: UserProfile) => action.email === user.email);
+
         return { ...state, user };
 
     })

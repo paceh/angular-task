@@ -9,7 +9,7 @@ export class ProfileService {
     constructor(private http: HttpClient) {
     }
 
-    getRandomProfile(): Observable<any> {
-        return this.http.get(this.apiURL)
+    getRandomProfile(params: string = ''): Observable<any> {
+        return this.http.get(`${this.apiURL}${params}`)
     }
 }
