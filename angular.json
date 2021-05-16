@@ -99,6 +99,9 @@
             "styles": [
               "src/styles.less"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/less"]
+            },
             "scripts": []
           }
         },

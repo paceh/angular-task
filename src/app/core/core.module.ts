@@ -6,6 +6,8 @@ import { AppStoreModule } from '@store/store.module';
 import { LayoutModule } from './layout/layout.module';
 import { moduleImportGuard } from './module-import-guard';
 import { RoutingModule } from './routing/routing.module';
+import { UserProfileService } from './services/user-profile.service';
+import { DataTransformService } from './services/data-transform.service';
 
 @NgModule({
     declarations: [],
@@ -22,6 +24,8 @@ import { RoutingModule } from './routing/routing.module';
         RoutingModule
     ],
     providers: [
+        UserProfileService,
+        DataTransformService,
         Location,
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         { provide: NgModuleFactoryLoader, useClass: SystemJsNgModuleLoader },
