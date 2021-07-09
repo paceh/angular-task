@@ -1,29 +1,46 @@
-import { ProfileState } from '@interfaces';
 import { Action, createReducer, on } from '@ngrx/store';
-import { profileActions } from '@store/actions';
+
+import { ProfileState, UserProfileMap } from '@interfaces';
 import { UserProfile } from '../interfaces';
 
-const dummyProfile: UserProfile = {
-    cellNumber: '888-888-8888',
-    city: 'Los Angeles',
-    dateOfBirth: 'Jan 1st, 1966',
-    email: 'test@crexi.com',
-    firstName: 'First Name',
-    lastName: 'Last Name',
-    phoneNumber: '999-999-9999',
-    picture: '/content/img/default_user.png',
-    state: 'CA'
-};
+import * as ProfileActions from '@store/actions';
 
-const initialState: ProfileState = {};
+const initialState: ProfileState = {
+    user: null,
+    userMap: {}
+};
 
 const reducer = createReducer(
     initialState,
-    on(profileActions.initProfile, (state) => {
 
-        return { ...state, user: dummyProfile };
+    on(ProfileActions.initProfileSuccess, (state: ProfileState, { userProfile }) => ({
+        ...state,
+        user: { ...userProfile }
+    })),
 
-    })
+    on(ProfileActions.initProfileFailure, (state: ProfileState) => ({
+        ...state,
+        user: { ...initialState.user }
+    })),
+
+    on(ProfileActions.loadProfileListSuccess, (state: ProfileState, { userProfiles }) => ({
+        ...state,
+        userMap: userProfiles.reduce((userProfileMap: UserProfileMap, userProfile: UserProfile) => ({
+            ...userProfileMap,
+            [ userProfile.id ]: { ...userProfile }
+        }), {})
+    })),
+
+    on(ProfileActions.loadProfileListFailure, (state: ProfileState) => ({
+        ...state,
+        userMap: {}
+    })),
+
+    on(ProfileActions.selectProfile, (state: ProfileState, { id }) => ({
+        ...state,
+        user: state.userMap[id]? { ...state.userMap[id] }: null
+    }))
+
 );
 
 // tslint:disable only-arrow-functions

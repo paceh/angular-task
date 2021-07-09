@@ -2,7 +2,7 @@
     <div class="header">
         <crx-header pageTitle="Profile Details"></crx-header>
     </div>
-    <mat-card *ngIf="user$ | async as user" class="card">
+    <mat-card *ngIf="user$ | async as user; else userNotFound" class="card">
         <mat-card-title-group>
             <mat-card-title>User Profile</mat-card-title>
             <mat-card-subtitle>{{ user.firstName }} {{ user.lastName }}</mat-card-subtitle>
@@ -27,9 +27,15 @@
                 </mat-list-item>
                 <mat-divider></mat-divider>
                 <mat-list-item>
-                    <span>Date of Birth: </span><span>{{ user.dateOfBirth }}</span>
+                    <span>Date of Birth: </span><span>{{ user.dateOfBirth | amLocale: "en" | amDateFormat: "MMM Do, YYYY" }}</span>
                 </mat-list-item>
             </mat-list>
         </mat-card-content>
     </mat-card>
+
+    <ng-template #userNotFound>
+        <mat-card class="card">
+            User profile not found!
+        </mat-card>
+    </ng-template>
 </crx-page>

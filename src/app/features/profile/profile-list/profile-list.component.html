@@ -1,0 +1,17 @@
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profile List"></crx-header>
+    </div>
+    <mat-card class="card">
+        <mat-card-title-group>
+            <mat-card-title>User Profile List</mat-card-title>
+        </mat-card-title-group>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item *ngFor="let user of userList$ | async; trackBy: user?.id">
+                    <app-user [userProfile]="user" (userClick)="onUserClick($event)"></app-user>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+</crx-page>

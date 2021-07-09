@@ -1,0 +1,7 @@
+<div *ngIf="userProfile" class="user mat-elevation-z1" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px" (click)="userClick.emit(userProfile.id)">
+    <img class="photo" [src]="userProfile.picture" width="35">
+    <div fxLayout="column" fxLayoutAlign="start start">
+        <span class="name">{{ userProfile.firstName }} {{ userProfile.lastName }}</span>
+        <span class="email">Email: {{ userProfile.email }}</span>
+    </div>
+</div>

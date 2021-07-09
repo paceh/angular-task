@@ -1,5 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatListModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
+import { AppLogoComponent } from '@core/layout/app-logo';
+import { HeaderComponent } from '@core/layout/header';
+import { PageComponent } from '@core/layout/page';
+import { MomentModule } from 'ngx-moment';
 import { ProfileDetailComponent } from './profile-detail.component';
 
 describe('ProfileDetailComponent', () => {
@@ -11,10 +16,15 @@ describe('ProfileDetailComponent', () => {
 
         TestBed.configureTestingModule({
             declarations: [
-                ProfileDetailComponent
+                ProfileDetailComponent,
+                HeaderComponent,
+                PageComponent,
+                AppLogoComponent
             ],
             imports: [
-                MatCardModule
+                MomentModule,
+                MatCardModule,
+                MatListModule
             ]
         })
         .compileComponents();
