@@ -11,7 +11,7 @@
       "es2018",
       "dom"
     ],
-    "module": "esnext",
+    "module": "es2020",
     "moduleResolution": "node",
     "newLine": "lf",
     "noImplicitAny": true,
