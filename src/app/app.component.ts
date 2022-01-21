@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-root',
+    selector: 'crx-root',
     styleUrls: ['./app.component.less'],
     templateUrl: './app.component.html'
 })
