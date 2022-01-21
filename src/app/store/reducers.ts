@@ -14,7 +14,7 @@ export const APP_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<AppState>>(
     }
 });
 
-// tslint:disable only-arrow-functions
+// eslint-disable  prefer-arrow/prefer-arrow-functions
 export function logger (reducer: ActionReducer<AppState>): ActionReducer<AppState> {
 
     return (state: AppState, action: any): AppState => {

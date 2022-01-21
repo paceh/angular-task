@@ -5,7 +5,7 @@ import { AppState } from '@store/reducers';
 import { getUserProfile } from '@store/selectors';
 
 @Component({
-    selector: 'app-profile-detail',
+    selector: 'crx-profile-detail',
     styleUrls: ['./profile-detail.component.less'],
     templateUrl: './profile-detail.component.html'
 })

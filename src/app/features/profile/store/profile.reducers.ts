@@ -26,7 +26,7 @@ const reducer = createReducer(
     })
 );
 
-// tslint:disable only-arrow-functions
+// eslint-disable  prefer-arrow/prefer-arrow-functions
 export function getProfileReducer (state: ProfileState | undefined, action: Action) {
 
     return reducer(state, action);

@@ -14,6 +14,10 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
+## Linting
+
+Run `ng lint` to execute [ESLint](https://github.com/typescript-eslint/typescript-eslint).
+
 ## Available routes:
 home page (default route: `/`)    
 user profile page (route: `/profile`)
