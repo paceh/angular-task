@@ -14,7 +14,8 @@ The UI is up to you, although it is recommended to use [Angular Material](https:
 
 # Project details
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.10.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.15.
+
 
 ## Development server
 
