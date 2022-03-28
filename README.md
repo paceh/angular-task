@@ -29,6 +29,10 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
+## Running end to end tests
+
+Run `ng e2e` to execute the end to end tests via [Cypress](https://docs.cypress.io/guides/getting-started/writing-your-first-test#Write-your-first-test).
+
 ## Linting
 
 Run `ng lint` to execute [ESLint](https://github.com/typescript-eslint/typescript-eslint).
