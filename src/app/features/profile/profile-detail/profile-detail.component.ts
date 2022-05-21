@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { profileActions } from '@store/actions';
+import { initProfile } from '@store/actions';
 import { AppState } from '@store/reducers';
-import { getUserProfile } from '@store/selectors';
+import { getUserLoadingState, getUserProfile } from '@store/selectors';
 
 @Component({
     selector: 'crx-profile-detail',
@@ -12,13 +12,17 @@ import { getUserProfile } from '@store/selectors';
 export class ProfileDetailComponent implements OnInit {
 
     user$ = this.store.select(getUserProfile);
+    loading$ = this.store.select(getUserLoadingState);
 
     constructor (private store: Store<AppState>) {}
 
     ngOnInit () {
 
-        this.store.dispatch(profileActions.initProfile());
+        this.store.dispatch(initProfile());
 
+        this.user$.subscribe((user) => {
+            console.log('USER -', user)
+        })
     }
 
 }

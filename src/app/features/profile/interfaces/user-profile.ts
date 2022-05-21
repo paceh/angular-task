@@ -9,3 +9,18 @@ export interface UserProfile {
     picture: string;
     state: string;
 }
+
+export interface RawUserProfile {
+    cell: string;
+    dob: any;
+    email: string;
+    gender: string;
+    id: any;
+    location: any;
+    login: any;
+    name: any;
+    nat: string;
+    phone: string;
+    picture: any;
+    register: any;
+}
