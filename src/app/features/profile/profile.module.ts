@@ -7,19 +7,26 @@ import { LayoutModule } from '@core/layout/layout.module';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { ProfileDetailComponent } from './profile-detail';
+import { ProfileListComponent } from './profile-list';
 import { ProfileEffects } from './store/profile.effects';
 import { getProfileReducer } from './store/profile.reducers';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
+import { ProfileCardComponent } from './profile-card';
 
 @NgModule({
     declarations: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        ProfileListComponent,
+        ProfileCardComponent
     ],
     entryComponents: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        ProfileListComponent
     ],
     exports: [
-        ProfileDetailComponent
+        ProfileDetailComponent,
+        ProfileListComponent
     ],
     imports: [
         CommonModule,
@@ -28,6 +35,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         MatDividerModule,
         MatListModule,
         MatProgressSpinnerModule,
+        MatButtonModule,
         StoreModule.forFeature('profile', getProfileReducer),
         EffectsModule.forFeature([ProfileEffects]),
     ]

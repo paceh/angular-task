@@ -1,0 +1,35 @@
+<mat-card *ngIf="user" class="card">
+    <div *ngIf="loading;else displayProfile" class="loading-container">
+        <mat-spinner></mat-spinner>
+    </div>
+    <ng-template #displayProfile>
+        <mat-card-title-group>
+            <mat-card-title><b>User Profile</b></mat-card-title>
+            <mat-card-subtitle>{{ user.firstName }} {{ user.lastName }}</mat-card-subtitle>
+            <img class="circle" mat-card-md-image [src]="user.picture" />
+        </mat-card-title-group>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item>
+                    <span><b>Phone:</b></span>&nbsp;<span>{{ user.phoneNumber }}</span>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <span><b>Cell:</b></span>&nbsp;<span>{{ user.cellNumber }}</span>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <span><b>City:</b></span>&nbsp;<span>{{ user.city }}, {{ user.state }}</span>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <span><b>Email:</b></span>&nbsp;<span>{{ user.email }}</span>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <span><b>Date of Birth:</b></span>&nbsp;<span>{{ user.dateOfBirth }}</span>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </ng-template>
+</mat-card>

@@ -1,0 +1,35 @@
+<crx-page>
+    <div class="header">
+        <crx-header pageTitle="Profile Details"></crx-header>
+    </div>
+    <ng-container *ngIf="loading$ | async;else displayProfileList">
+        <mat-card class="card">
+            <div class="loading-container">
+                <mat-spinner></mat-spinner>
+            </div>
+        </mat-card>
+    </ng-container>
+    <ng-template #displayProfileList>
+        <mat-card *ngIf="userList$ | async as userList" class="card">
+            <mat-card-title-group>
+                <mat-card-title><b>User Profile List</b></mat-card-title>
+                <mat-card-subtitle>
+                    <button
+                        mat-raised-button
+                        (click)="refreshUserList()"
+                    >Refresh User List
+                    </button>
+                </mat-card-subtitle>
+            </mat-card-title-group>
+            <mat-card-content>
+                <mat-divider></mat-divider>
+                <mat-action-list *ngFor="let item of userList; trackBy: identify">
+                    <button mat-list-item (click)="viewProfileDetail(item.id)">
+                        <img class="circle" mat-card-md-image [src]="item.user.picture" />
+                        <span>&emsp;{{ item.user.firstName }} {{ item.user.lastName }}&emsp;</span>
+                    </button>
+                </mat-action-list>
+            </mat-card-content>
+        </mat-card>
+    </ng-template>
+</crx-page>

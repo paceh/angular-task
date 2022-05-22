@@ -24,3 +24,8 @@ export interface RawUserProfile {
     picture: any;
     register: any;
 }
+
+export interface UserListItem {
+    id: string;
+    user: UserProfile;
+}

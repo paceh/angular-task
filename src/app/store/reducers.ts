@@ -18,11 +18,7 @@ export const APP_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<AppState>>(
 export function logger (reducer: ActionReducer<AppState>): ActionReducer<AppState> {
 
     return (state: AppState, action: any): AppState => {
-
-        // console.log('%c NGRX action ', loggerStyles, action, state);
-
         return reducer(state, action);
-
     };
 
 }

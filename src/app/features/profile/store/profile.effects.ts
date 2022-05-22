@@ -2,9 +2,16 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { from, of } from "rxjs";
 import { catchError, switchMap } from "rxjs/operators";
-import { UserProfile } from "../interfaces";
+import { UserListItem, UserProfile } from "../interfaces";
 import { ProfileService } from "../services/profile.service";
-import { initProfile, initProfileFailure, initProfileSuccess, ProfileAction } from "./profile.actions";
+import { initProfile,
+    initProfileFailure,
+    initProfileSuccess,
+    ProfileAction,
+    initProfileList,
+    initProfileListSuccess,
+    initProfileListFailure,
+} from "./profile.actions";
 
 @Injectable()
 export class ProfileEffects {
@@ -21,6 +28,28 @@ export class ProfileEffects {
                     catchError((error) => 
                         of(
                             initProfileFailure({
+                                error
+                            })
+                        )
+                    )
+                )
+            })
+        )
+    )
+
+    fetchProfileListData$ = createEffect(() =>
+        this.action$.pipe(
+            ofType(initProfileList.type),
+            switchMap(() => {
+                return this.profileService.getRandomUserList().pipe(
+                    switchMap((userList: UserListItem[]) => {
+                        const actions = []
+                        actions.push(initProfileListSuccess({userList}))
+                        return from(actions)
+                    }),
+                    catchError((error) =>
+                        of(
+                            initProfileListFailure({
                                 error
                             })
                         )
