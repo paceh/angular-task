@@ -31,6 +31,7 @@ export class ProfileService {
             )
     }
 
+    // TODO: clean this function up
     getRandomUserList(): Observable<UserListItem[]> {
         return this.getRandomUser(true).pipe(
             withLatestFrom(
