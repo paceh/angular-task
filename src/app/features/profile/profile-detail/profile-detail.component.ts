@@ -19,10 +19,6 @@ export class ProfileDetailComponent implements OnInit {
     ngOnInit () {
 
         this.store.dispatch(initProfile());
-
-        this.user$.subscribe((user) => {
-            console.log('USER -', user)
-        })
     }
 
 }
